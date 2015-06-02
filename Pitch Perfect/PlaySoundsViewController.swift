@@ -3,7 +3,7 @@
 //
 //  Created by Paul Durocher on 5/30/15.
 //  Copyright (c) 2015 Udacity. All rights reserved.
-//  PlayEchoAudio and PlayReverbAudio
+
 
 import UIKit
 import AVFoundation
@@ -13,12 +13,10 @@ class PlaySoundsViewController: UIViewController {
     var audioPlayer:AVAudioPlayer!
     var audioPlayer2:AVAudioPlayer!
     var receivedAudio:RecordedAudio!
-    var reverb = AVAudioUnitReverb()
-    var delay = AVAudioUnitDelay()
+    var audioReverb = AVAudioUnitReverb()
+    var audioDelay = AVAudioUnitDelay()
     var error:NSError?
-    //var reverbPlayers:[AVAudioPlayer] = []
-    //let N:Int = 10
-    
+    var wetDryMix:Float = 0.0
     var audioEngine:AVAudioEngine!
     var audioFile:AVAudioFile!
     
@@ -31,10 +29,6 @@ class PlaySoundsViewController: UIViewController {
         
         audioEngine = AVAudioEngine()
         audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error:nil)
-//        for i in 0...N {
-//            var temp = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
-//            reverbPlayers.append(temp)
-//        }
         
     }
     override func didReceiveMemoryWarning() {
@@ -82,9 +76,18 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer2.playAtTime(playtime)
     }
     
+    func loadFactoryPreset(preset: AVAudioUnitReverbPreset) {
+        
+    
+    }
+    
     @IBAction func playReverbAudio(sender: UIButton) {
-        audioEngine.attachNode(delay)
-        audioEngine.attachNode(reverb)
+        audioEngine.attachNode(audioDelay)
+        audioEngine.attachNode(audioReverb)
+        var reverbPreset = AVAudioUnitReverbPreset(rawValue: 10)
+        
+        
+        //audioEngine.connect(<#node1: AVAudioNode!#>, to: <#AVAudioNode!#>, format: <#AVAudioFormat!#>)
 //        audioEngine.connect(input, to: delay, format: format)
 //        audioEngine.connect(delay, to: reverb, format: format)
 //        audioEngine.connect(reverb, to: output, format: format)
