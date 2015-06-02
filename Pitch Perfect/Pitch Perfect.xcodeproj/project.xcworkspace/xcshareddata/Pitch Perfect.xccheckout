@@ -12,6 +12,8 @@
 	<dict>
 		<key>6DFF74FA17FAE0A629167CAEDE3D94139A83A758</key>
 		<string>https://github.com/durocherp/ios_nanodegree.git</string>
+		<key>9A3534913D18D5B3F698924FD1FEC6461B39E70C</key>
+		<string>https://github.com/durocherp/ios_nanodegree.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Pitch Perfect/Pitch Perfect.xcodeproj</string>
@@ -19,13 +21,15 @@
 	<dict>
 		<key>6DFF74FA17FAE0A629167CAEDE3D94139A83A758</key>
 		<string>../../../..</string>
+		<key>9A3534913D18D5B3F698924FD1FEC6461B39E70C</key>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/durocherp/ios_nanodegree.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>6DFF74FA17FAE0A629167CAEDE3D94139A83A758</string>
+	<string>9A3534913D18D5B3F698924FD1FEC6461B39E70C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -40,7 +44,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>6DFF74FA17FAE0A629167CAEDE3D94139A83A758</string>
+			<string>9A3534913D18D5B3F698924FD1FEC6461B39E70C</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ios_nanodegree</string>
 		</dict>
