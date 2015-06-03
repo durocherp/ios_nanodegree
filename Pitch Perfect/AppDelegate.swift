@@ -4,10 +4,6 @@
 //
 //  Created by Paul Durocher on 5/11/15.
 //  Copyright (c) 2015 Udacity. All rights reserved.
-// <div>Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> 
-// from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> 
-// is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" 
-// title="Creative Commons BY 3.0">CC BY 3.0</a></div>
 
 import UIKit
 

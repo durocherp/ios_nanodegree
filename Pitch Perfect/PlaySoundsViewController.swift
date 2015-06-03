@@ -8,17 +8,19 @@
 import UIKit
 import AVFoundation
 
-class PlaySoundsViewController: UIViewController {
+class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
 
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var resumeButton: UIButton!
+    
     var audioPlayer:AVAudioPlayer!
     var audioPlayer2:AVAudioPlayer!
     var receivedAudio:RecordedAudio!
-    var audioReverb = AVAudioUnitReverb()
-    var audioDelay = AVAudioUnitDelay()
+    
     var error:NSError?
-    var wetDryMix:Float = 0.0
     var audioEngine:AVAudioEngine!
     var audioFile:AVAudioFile!
+    //var isPlaying:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,13 @@ class PlaySoundsViewController: UIViewController {
         audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error:nil)
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        pauseButton.hidden = true
+        resumeButton.hidden = true
+        //isPlaying = false
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -40,6 +49,7 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.rate = 0.5
         audioPlayer.currentTime = 0
         audioPlayer.play()
+        //isPlaying = true
     }
     
     @IBAction func playFastAudio(sender: UIButton) {
@@ -47,6 +57,7 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.rate = 1.5
         audioPlayer.currentTime = 0
         audioPlayer.play()
+        //isPlaying = true
     }
     
     @IBAction func playChipmunkAudio(sender: UIButton) {
@@ -66,7 +77,7 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.currentTime = 0
         audioPlayer.play()
         
-        let delay:NSTimeInterval = 0.5 //100ms
+        let delay:NSTimeInterval = 0.5 // 500ms
         var playtime:NSTimeInterval
         playtime = audioPlayer2.deviceCurrentTime + delay
         
@@ -76,33 +87,32 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer2.playAtTime(playtime)
     }
     
-    func loadFactoryPreset(preset: AVAudioUnitReverbPreset) {
+    @IBAction func playReverb(sender: UIButton) {
         
-    
     }
     
     @IBAction func playReverbAudio(sender: UIButton) {
-        audioEngine.attachNode(audioDelay)
-        audioEngine.attachNode(audioReverb)
-        var reverbPreset = AVAudioUnitReverbPreset(rawValue: 10)
-        
-        
-        //audioEngine.connect(<#node1: AVAudioNode!#>, to: <#AVAudioNode!#>, format: <#AVAudioFormat!#>)
-//        audioEngine.connect(input, to: delay, format: format)
-//        audioEngine.connect(delay, to: reverb, format: format)
-//        audioEngine.connect(reverb, to: output, format: format)
-        
-        //**********************
-//        let delay:NSTimeInterval = 0.02
-//        for i in 0...N{
-//            var curDelay:NSTimeInterval = delay * NSTimeInterval(i)
-//            var player:AVAudioPlayer = reverbPlayers[i]
-//            
-//            var exponent:Double = -Double(i)/Double(N/2)
-//            var volume = Float(pow(Double(M_E), exponent))
-//            player.volume = volume
-//            player.playAtTime(player.deviceCurrentTime + curDelay)
-//        }
+//        audioPlayer.stop()
+//        audioPlayer.currentTime = 0
+//        
+//        var audioPlayerNode = AVAudioPlayerNode() //pitch player
+//        audioEngine.attachNode(audioPlayerNode)
+//        
+//        var audioDelay = AVAudioUnitDelay()
+//        audioEngine.attachNode(audioDelay)
+//        
+//        var audioReverb = AVAudioUnitReverb()
+//        audioReverb.wetDryMix = 10
+//        
+//        audioEngine.attachNode(audioReverb)
+//        
+//        audioEngine.connect(audioPlayerNode, to: audioReverb, format:nil)
+//        //audioEngine.connect(audioDelay, to: audioPlayerNode, format:nil)
+//        
+//        audioEngine.connect(audioReverb, to: audioDelay, format:nil)
+//        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+//        audioEngine.startAndReturnError(nil)
+//        audioPlayerNode.play()
     }
     
     func playAudioWithVariablePitch(pitch: Float) {
@@ -122,6 +132,17 @@ class PlaySoundsViewController: UIViewController {
         audioEngine.startAndReturnError(nil)
         
         audioPlayerNode.play()
+    }
+    @IBAction func pauseAudio(sender: UIButton) {
+    // audioPlayer.pause()
+    //    pauseButton.hidden = true
+        resumeButton.hidden = false
+    }
+    
+    @IBAction func resumeAudio(sender: AnyObject) {
+        audioPlayer.play()
+        resumeButton.hidden = true
+     //   pauseButton.hidden = false
     }
     
     @IBAction func stopAudio(sender: UIButton) {
