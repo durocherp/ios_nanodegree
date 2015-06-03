@@ -150,7 +150,6 @@
                                 </state>
                                 <connections>
                                     <action selector="playDarthVaderAudio:" destination="nGZ-U4-HQy" eventType="touchUpInside" id="SMA-4z-X8N"/>
-                                    <action selector="sample:" destination="nGZ-U4-HQy" eventType="touchUpInside" id="MCq-Ca-Ke7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENI-hh-ayn">
@@ -160,7 +159,7 @@
                                 </state>
                                 <connections>
                                     <action selector="playReverb:" destination="nGZ-U4-HQy" eventType="touchUpInside" id="tx9-F5-P47"/>
-                                    <action selector="playReverbAudio:" destination="nGZ-U4-HQy" eventType="touchUpInside" id="w5a-Ut-YTR"/>
+                                    <action selector="playReverbAudio:" destination="nGZ-U4-HQy" eventType="touchUpInside" id="YL5-nF-Tg8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cl-LE-4vK">
@@ -292,7 +291,6 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="pause" destination="ciT-mO-qsA" id="Pf0-cc-Jaa"/>
                         <outlet property="pauseButton" destination="ciT-mO-qsA" id="mgZ-ax-u5e"/>
                         <outlet property="resumeButton" destination="EsC-RK-wdn" id="1qi-Lb-TOG"/>
                     </connections>
